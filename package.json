@@ -1,0 +1,79 @@
+{
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "lerna run build",
+    "lint": "vue-cli-service lint",
+    "bootstrap": "lerna bootstrap",
+    "cz:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+  },
+  "dependencies": {
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.2.0",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "babel-eslint": "^10.0.1",
+    "commitizen": "^3.0.5",
+    "conventional-changelog": "^3.0.5",
+    "cz-customizable": "^5.2.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "husky": "^1.1.1",
+    "lerna": "^3.13.1",
+    "less-loader": "^4.1.0",
+    "lint-staged": "^8.1.3",
+    "vue-cli-plugin-ui-cz": "0.1.0",
+    "vue-cli-plugin-ui-lint": "0.1.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "lerna bootstrap",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "workspaces": [
+    "packages/*",
+    "plugins/*"
+  ]
+}

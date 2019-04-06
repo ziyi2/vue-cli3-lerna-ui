@@ -1,0 +1,56 @@
+// file: img.less
+// data: 2017/09/21
+// auth: ziyi2
+// desc: 图片样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+@img-padding:             4px;
+@img-bg:                #fff;
+@img-border:            #ddd;
+@img-border-radius:       @border-radius-base;
+
+// desc: 混合
+// --------------------------------------------------
+.img-responsive(@display: block) {
+  display: @display;
+  max-width: 100%;
+  height: auto;
+}
+
+
+// desc: 样式
+// --------------------------------------------------
+
+.h-img {
+  vertical-align: middle;
+}
+
+.h-img-responsive {
+  .img-responsive();
+}
+
+.h-img-rounded {
+  border-radius: @border-radius-large;
+}
+
+.h-img-photo {
+  padding: @img-padding;
+  line-height: @line-height-base;
+  background-color: @img-bg;
+  border: 1px solid @img-border;
+  border-radius: @img-border-radius;
+  .img-responsive(inline-block);
+}
+
+.h-img-circle {
+  border-radius: 50%;
+}
+

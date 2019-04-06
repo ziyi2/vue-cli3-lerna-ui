@@ -1,0 +1,122 @@
+// file: checkbox-group.less
+// data: 2017/10/29
+// auth: ziyi2
+// desc: 多选框组样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-checkbox-group-radius(@radius) {
+  label.h-checkbox-btn {      // 包含单个h-checkbox-btn组件生效
+    border-radius: @radius;
+  }
+
+  .h-checkbox-btn:not(:first-child):not(:last-child) {
+    border-radius: @border-radius-none;
+  }
+
+  .h-checkbox-btn:first-child:not(:last-child) {
+    .border-right-radius(@border-radius-none);
+    .border-left-radius(@radius);
+  }
+
+  .h-checkbox-btn:last-child:not(:first-child) {
+    .border-right-radius(@radius);
+    .border-left-radius(@border-radius-none);
+  }
+}
+
+
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+
+.h-checkbox-group {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;                     // 为了去除label(display: inline-block)之间的间隔
+  -webkit-text-size-adjust:none;    // 兼容旧版chrome
+}
+
+.h-checkbox-group + .h-checkbox-group {
+  margin-left:  @margin-left-default;
+}
+
+// desc: 样式
+// type: disabled样式
+// --------------------------------------------------
+.h-checkbox-group-disabled {
+  .disabled();
+
+  .h-checkbox-btn-disabled {
+    opacity: 1;
+  }
+}
+
+// desc: 样式
+// type: 阴影
+// --------------------------------------------------
+.h-checkbox-group-shadow {
+  .box-shadow(@box-shadow-base);
+  border: none;
+
+  label.h-checkbox-btn {
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+
+// desc: 样式
+// type: 按钮形式圆角样式
+// --------------------------------------------------
+.h-checkbox-group-radius-small {
+  .h-checkbox-group-radius(@border-radius-small);
+}
+
+.h-checkbox-group-radius-large {
+  .h-checkbox-group-radius(@border-radius-large);
+}
+
+.h-checkbox-group-radius-circle {
+  .h-checkbox-group-radius(@checkbox-group-radius-circle);
+}
+
+
+// desc: 样式
+// type: 按钮形式大小
+// --------------------------------------------------
+.h-checkbox-group-size-small {
+  label.h-checkbox-btn {   
+    height: @checkbox-group-small-height;              // 兼容IE
+    padding: @checkbox-group-small-padding;
+    span {
+      line-height: @line-height-computed;
+    }
+  }
+}
+
+.h-checkbox-group-size-large {
+  label.h-checkbox-btn {   
+    height: @checkbox-group-large-height;              // 兼容IE
+    padding: @checkbox-group-large-padding;
+    span {
+      line-height: @line-height-computed;
+    }
+  }
+}
+
+
+
+

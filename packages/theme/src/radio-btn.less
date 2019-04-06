@@ -1,0 +1,116 @@
+// file: radio-btn.less
+// data: 2017/10/28
+// auth: ziyi2
+// desc: 按钮单选框样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@radio-btn-check-content-barckground:     @gray-90;
+
+// desc: 混合
+// --------------------------------------------------
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-radio-btn {
+  display: inline-block;
+  padding: @btn-default-padding;
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: @line-height-computed;
+  height: @btn-default-height;    // 兼容IE
+  text-align: center;
+  white-space: nowrap;
+  outline-style: none;
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid @gray-80;
+  border-radius: @border-radius-none; 
+  // margin-left: -1px;
+  position: relative;
+  cursor: pointer;
+  .user-select(none);
+  .fade-all();
+
+  span {
+    display: inline-block;
+    height: 100%; 
+    line-height: @line-height-computed;
+  }
+
+  input[type=radio] {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    outline: none;
+    z-index: @radio-input-index;
+    display: inline-block;
+    line-height: @btn-default-height; 
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.h-radio-btn + .h-radio-btn {
+  margin-left: -1px;
+}
+
+
+// desc: 样式
+// type: checked样式
+// --------------------------------------------------
+.h-radio-btn-checked {
+  background-color: @radio-btn-check-content-barckground;
+}
+
+// desc: 样式
+// type: 语义样式
+// --------------------------------------------------
+.h-radio-btn-semantic-primary {
+  background-color: lighten(@primary, 10%);
+  border: 1px solid lighten(@primary, 10%);
+}
+
+.h-radio-btn-semantic-success {
+  background-color: lighten(@success, 10%);
+  border: 1px solid lighten(@success, 10%);
+}
+
+.h-radio-btn-semantic-info {
+  background-color: lighten(@info, 10%);
+  border: 1px solid lighten(@info, 10%);
+}
+
+.h-radio-btn-semantic-warning {
+  background-color: lighten(@warning, 10%);
+  border: 1px solid lighten(@warning, 10%);
+}
+
+.h-radio-btn-semantic-danger {
+  background-color: lighten(@danger, 10%);
+  border: 1px solid lighten(@danger, 10%);
+}
+
+
+
+// desc: 样式
+// type: disabled样式
+// --------------------------------------------------
+.h-radio-btn-disabled {
+  .disabled();
+}
+
+

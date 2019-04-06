@@ -1,0 +1,123 @@
+// file: radio-group.less
+// data: 2017/10/28
+// auth: ziyi2
+// desc: 单选框组样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-radio-group-radius(@radius) {
+  label.h-radio-btn {      // 包含单个h-radio-btn组件生效
+    border-radius: @radius;
+  }
+
+  .h-radio-btn:not(:first-child):not(:last-child) {
+    border-radius: @border-radius-none;
+  }
+
+  .h-radio-btn:first-child:not(:last-child) {
+    .border-right-radius(@border-radius-none);
+    .border-left-radius(@radius);
+  }
+
+  .h-radio-btn:last-child:not(:first-child) {
+    .border-right-radius(@radius);
+    .border-left-radius(@border-radius-none);
+  }
+}
+
+
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+
+.h-radio-group {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;                     // 为了去除label(display: inline-block)之间的间隔
+  -webkit-text-size-adjust:none;    // 兼容旧版chrome
+}
+
+.h-radio-group + .h-radio-group {
+  margin-left:  @margin-left-default;
+}
+
+// desc: 样式
+// type: disabled样式
+// --------------------------------------------------
+.h-radio-group-disabled {
+  .disabled();
+
+  .h-radio-btn-disabled {
+    opacity: 1;
+  }
+}
+
+
+// desc: 样式
+// type: 按钮阴影
+// --------------------------------------------------
+.h-radio-group-shadow {
+  .box-shadow(@box-shadow-base);
+  border: none;
+
+  label.h-radio-btn {
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+
+// desc: 样式
+// type: 按钮形式圆角样式
+// --------------------------------------------------
+.h-radio-group-radius-small {
+  .h-radio-group-radius(@border-radius-small);
+}
+
+.h-radio-group-radius-large {
+  .h-radio-group-radius(@border-radius-large);
+}
+
+.h-radio-group-radius-circle {
+  .h-radio-group-radius(@radio-group-radius-circle);
+}
+
+
+// desc: 样式
+// type: 按钮形式大小
+// --------------------------------------------------
+.h-radio-group-size-small {
+  label.h-radio-btn {   
+    height: @radio-group-small-height;              // 兼容IE
+    padding: @radio-group-small-padding;
+    span {
+      line-height: @line-height-computed;
+    }
+  }
+}
+
+.h-radio-group-size-large {
+  label.h-radio-btn {   
+    height: @radio-group-large-height;              // 兼容IE
+    padding: @radio-group-large-padding;
+    span {
+      line-height: @line-height-computed;
+    }
+  }
+}
+
+
+
+

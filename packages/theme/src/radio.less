@@ -1,0 +1,161 @@
+// file: radio.less
+// data: 2017/10/25
+// auth: ziyi2
+// desc: 单选框样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@radio-check-border-size:             2px;
+
+@radio-check-border:                  @radio-check-border-size solid @gray-70;
+@radio-check-content-barckground:     @gray-70;
+
+// desc: 混合
+// --------------------------------------------------
+.h-radio-semantic(@color) {
+  .h-radio-check {
+    border: @radio-check-border-size solid lighten(@color, 10%);
+    &:before {
+      background-color: lighten(@color, 10%);
+    }
+  }
+
+  .h-radio-checked {
+    box-shadow: 0 0 5px lighten(@color, 10%);
+    &:before {
+      background-color: lighten(@color, 10%);
+    }
+  }
+}
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-radio {
+  outline: none;
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  .user-select(none);
+  position: relative;
+  line-height: @line-height-base;
+  font-size: @font-size-base;
+
+  span {
+    display: inline-block;
+    height: @line-height-computed;
+    vertical-align: middle;
+  }
+ 
+  input[type=radio] {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    left: -@radio-check-border-size;
+    right: 0;
+    top: -@radio-check-border-size;
+    bottom: 0;
+    margin: 0;
+    outline: none;
+    z-index: @radio-input-index;
+    display: inline-block;
+    line-height:  @line-height-base;
+    width: @line-height-computed;
+    height: @line-height-computed;
+  }
+
+
+  .h-radio-text {
+    padding-left:  0;
+  }
+}
+
+.h-radio + .h-radio {
+  margin-left:  @margin-left-default;
+}
+
+
+
+
+// desc: 样式
+// type: 未选中时checked样式
+// --------------------------------------------------
+
+.h-radio-check {
+  width: @line-height-computed;
+  height: @line-height-computed;
+  border: @radio-check-border;
+  background-color: #fff;
+  border-radius: 100%;
+  //justify-content: center;    // IE9不支持
+  position: relative;
+  
+
+  &:before {
+    content: '';
+    width: @line-height-computed / 2;
+    height: @line-height-computed / 2;
+    background-color: @radio-check-content-barckground;
+    .expand-init();
+  }
+}
+
+
+
+// desc: 样式
+// type: checked样式
+// --------------------------------------------------
+.h-radio-checked {
+  box-shadow: 0 0 5px @gray-70;
+  &:before {
+    content: '';
+    width: @line-height-computed / 2;
+    height: @line-height-computed / 2;
+    background-color: @radio-check-content-barckground;
+    position: absolute;
+    left: (@line-height-computed / 2 - 2 * @radio-check-border-size ) / 2;
+    top: (@line-height-computed / 2 - 2 * @radio-check-border-size ) / 2;
+    .expand-done();
+    border-radius: 100%;
+  }
+}
+
+// desc: 样式
+// type: 语义样式
+// --------------------------------------------------
+.h-radio-semantic-primary {
+  .h-radio-semantic(@primary)
+}
+
+.h-radio-semantic-success {
+  .h-radio-semantic(@success)
+}
+
+.h-radio-semantic-info {
+  .h-radio-semantic(@info)
+}
+
+.h-radio-semantic-warning {
+  .h-radio-semantic(@warning)
+}
+
+.h-radio-semantic-danger {
+  .h-radio-semantic(@danger)
+}
+
+// desc: 样式
+// type: disabled样式
+// --------------------------------------------------
+.h-radio-disabled {
+  .disabled();
+}
+
+

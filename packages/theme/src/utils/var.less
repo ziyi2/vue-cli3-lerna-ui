@@ -1,0 +1,208 @@
+// file: var.less
+// data: 2017/09/21
+// auth: ziyi2
+// desc: 基础变量
+// --------------------------------------------------
+
+// desc: 辅助色
+// --------------------------------------------------
+@gray-10:                         lighten(#000, 10%); 
+@gray-20:                         lighten(#000, 20%); 
+@gray-30:                         lighten(#000, 30%); 
+@gray-40:                         lighten(#000, 40%); 
+@gray-50:                         lighten(#000, 50%); 
+@gray-60:                         lighten(#000, 60%); 
+@gray-70:                         lighten(#000, 70%); 
+@gray-75:                         lighten(#000, 75%); 
+@gray-85:                         lighten(#000, 80%); 
+@gray-80:                         lighten(#000, 85%); 
+@gray-90:                         lighten(#000, 90%); 
+@gray-95:                         lighten(#000, 95%); 
+
+
+// desc: 语义色
+// --------------------------------------------------
+@default:                         @gray-80;
+@primary:                       #62a8ea; //hsl(217, 71%, 53%);
+@info:	                        #57c7d4; //hsl(204, 86%, 53%);
+@success:                       #46be8a; //hsl(141, 71%, 48%);
+@warning:                       #f2a654; //hsl(47, 100%, 50%);
+@danger:                        #f96868; //hsl(348, 100%, 61%);
+
+
+// desc: 字体
+// --------------------------------------------------
+@link-color:                    @primary; 
+@link-hover-color:              darken(@link-color, 20%);
+
+
+// desc: 字体
+// --------------------------------------------------
+@font-family-sans-serif:          BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Tahoma, "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+@font-family-base:                @font-family-sans-serif;
+@font-family-monospace:           Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@font-size-base:                  14px;
+@font-size-small:                 12px;
+@line-height-base:                1.428571429;  // 20/14
+@line-height-computed:            floor((@font-size-base * @line-height-base));
+@font-color:                    #363636;      // body元素的文本色
+@font-color-auxiliary:            @gray-60;
+
+// desc: 盒模型
+// --------------------------------------------------
+@border-radius-none:              0;
+@border-radius-base:              4px;
+@border-radius-large:             6px;
+@border-radius-small:             3px;
+
+@box-shadow-base:                 0 2px 12px 0 rgba(0,0,0,.1);
+@box-shadow-auxiliary:            0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+
+@box-shadow-primary:              0 1px 5px lighten(@primary, 35%), 0 2px 2px lighten(@primary, 30%), 0 3px 1px -2px lighten(@primary, 25%);
+@box-shadow-success:              0 1px 5px lighten(@success, 35%), 0 2px 2px lighten(@success, 30%), 0 3px 1px -2px lighten(@success, 25%);
+@box-shadow-danger:               0 1px 5px lighten(@danger, 35%), 0 2px 2px lighten(@danger, 30%), 0 3px 1px -2px lighten(@danger, 25%);
+@box-shadow-info:                 0 1px 5px lighten(@info, 35%), 0 2px 2px lighten(@info, 30%), 0 3px 1px -2px lighten(@info, 25%);
+@box-shadow-warning:              0 1px 5px lighten(@warning, 35%), 0 2px 2px lighten(@warning, 30%), 0 3px 1px -2px lighten(@warning, 25%);
+
+
+@margin-left-default:             5px;
+@margin-bottom-default:           @line-height-computed;
+
+
+//== 按钮
+@btn-default-padding:             7px 12px;
+@btn-small-padding:               4px 12px;
+@btn-large-padding:               10px 18px;
+@btn-small-height:                30px;
+@btn-default-height:              36px;   //(@btn-small-height + 6);
+@btn-large-height:                42px;   //(@btn-default-height + 6);
+@btn-radius-circle:               @btn-default-height;
+
+//== 按钮组
+@btn-group-default-padding:       @btn-default-padding;
+@btn-group-small-padding:         @btn-small-padding;
+@btn-group-large-padding:         @btn-large-padding;
+@btn-group-large-height:          @btn-large-height;
+@btn-group-small-height:          @btn-small-height;
+@btn-group-default-height:        @btn-default-height;
+@btn-group-radius-circle:         @btn-radius-circle;
+
+//== 单选框组
+@radio-group-radius-circle:       @btn-radius-circle;
+@radio-group-small-height:        @btn-small-height;
+@radio-group-small-padding:       @btn-small-padding;
+@radio-group-large-height:        @btn-large-height;
+@radio-group-large-padding:       @btn-large-padding;
+
+//== 多选框组
+@checkbox-group-radius-circle:    @btn-radius-circle;
+@checkbox-group-small-height:     @btn-small-height;
+@checkbox-group-small-padding:    @btn-small-padding;
+@checkbox-group-large-height:     @btn-large-height;
+@checkbox-group-large-padding:    @btn-large-padding;
+
+//== 输入框
+@input-default-height:            @btn-default-height;
+@input-default-padding:           @btn-default-padding;
+@input-small-height:              @btn-small-height;
+@input-small-padding:             @btn-small-padding;
+@input-large-height:              @btn-large-height;
+@input-large-padding:             @btn-large-padding;
+@input-radius-circle:             @input-default-height;
+
+//== 下拉菜单
+@dropdown-item-padding:           10px 12px;
+@dropdown-item-height:            40px;
+@dropdown-item-title-height:      30px;
+@dropdown-item-title-padding:     5px 12px;
+
+
+//== 警告
+@alert-default-height:            @btn-default-height;
+@alert-default-padding:           @btn-default-padding;
+@alert-small-height:              @btn-small-height;
+@alert-small-padding:             @btn-small-padding;
+@alert-large-height:              @btn-large-height;
+@alert-large-padding:             @btn-large-padding;
+@alert-radius-circle:             @btn-default-height;
+
+//== 提示框
+@tooltip-default-height:          @btn-default-height;
+@tooltip-default-padding:         @btn-default-padding;    
+@tooltip-radius-circle:           @btn-default-height;
+@tooltip-small-height:            @btn-small-height;
+@tooltip-small-padding:           @btn-small-padding;
+@tooltip-large-height:            @btn-large-height;
+@tooltip-large-padding:           @btn-large-padding;
+
+//== 弹出框
+@poper-default-height:            @btn-default-height;
+@poper-default-padding:           @btn-default-padding;    
+@poper-radius-circle:             @btn-default-height;
+@poper-small-height:              @btn-small-height;
+@poper-small-padding:             @btn-small-padding;
+@poper-large-height:              @btn-large-height;
+@poper-large-padding:             @btn-large-padding;
+
+//== 标签
+@tag-default-height:              @btn-small-height;
+@tag-default-padding:             @btn-small-padding;
+@tag-radius-circle:               @btn-default-height;
+@tag-large-height:                @btn-default-height;
+@tag-large-padding:               @btn-default-padding;
+@tag-larger-height:               @btn-large-height;
+@tag-larger-padding:              @btn-large-padding;
+
+
+//== 标签组
+@tag-group-default-height:              @btn-small-height;
+@tag-group-default-padding:             @btn-small-padding;
+@tag-group-radius-circle:               @btn-default-height;
+@tag-group-large-height:                @btn-default-height;
+@tag-group-large-padding:               @btn-default-padding;
+@tag-group-larger-height:               @btn-large-height;
+@tag-group-larger-padding:              @btn-large-padding;
+
+
+//== 通知处理 
+@snackbar-default-padding:              @btn-large-padding;
+@snackbar-default-height:               @btn-large-height;          
+
+//== 通知 
+@toast-default-padding:                 20px 28px;      //@btn-large-padding + 10
+@toast-default-height:                  @btn-large-height;   
+@toast-radius-circle:                   @btn-large-height; 
+    
+//== 表格
+@table-default-td-height:         52px;   //(@btn-large-height + 6);
+@table-default-th-height:         64px;   //(@table-default-td-height + 12);        
+
+// desc: 媒体
+// --------------------------------------------------
+@screen-sm:                       768px;            //小屏幕 平板 
+@screen-sm-min:                   @screen-sm;
+
+@screen-md:                       992px;            //中等屏幕 桌面显示器 
+@screen-md-min:                   @screen-md;
+
+@screen-lg:                       1200px;           //大屏幕 大桌面显示器 
+@screen-lg-min:                   @screen-lg;
+
+// desc: 堆叠顺序(z-index)
+// --------------------------------------------------
+@checkbox-input-index:           -1;            //多选框
+@radio-input-index:              -1;            //单选框 
+@btn-group-index:                 2;            //按钮组
+@input-icon-index:                3;            //input的icon图标
+@navbar-fixed-index:              97;           //导航固定
+@tooltip-index:                   98;           //提示框
+@poper-index:                     98;           //弹出框
+@dropdown-menu-index:             99;           //下拉菜单
+@snackbar-index:                  2019;         //通知处理
+@toast-index:                  2019;            //通知
+@dropdown-menu-fixed-index:       2021;         //下拉菜单移动端固定(高于遮罩，需要注意祖先元素不能有z-index值，否则遮罩容易遮住下拉菜单)
+@backgroun-index:                 2020;         //遮罩
+
+
+

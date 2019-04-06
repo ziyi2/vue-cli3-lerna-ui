@@ -1,0 +1,156 @@
+// file: tooltip.less
+// data: 2017/12/03
+// auth: ziyi2
+// desc: 提示框样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+// desc: 混合
+// --------------------------------------------------
+.h-tooltip-semantic(@color) {
+  
+  background-color: lighten(@color, 10%);
+
+  .h-tooltip-placement-right {
+    border-right-color: lighten(@color, 10%);
+  }
+  
+  .h-tooltip-placement-left {
+    border-left-color: lighten(@color, 10%);
+  }
+  
+  .h-tooltip-placement-bottom {
+    border-bottom-color: lighten(@color, 10%);
+  }
+  
+  .h-tooltip-placement-top {
+    border-top-color: lighten(@color, 10%);
+  }
+}
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-tooltip {
+  position: absolute;
+  z-index: @tooltip-index;
+  top: 0;
+  left: 0;
+  display: block;
+  min-height: @tooltip-default-height;
+  padding: @tooltip-default-padding;
+  border: 1px solid transparent;
+  line-height: @line-height-computed;
+  box-shadow: @box-shadow-base;
+  background: @default;
+}
+
+.h-tooltip-arrow {
+  position: absolute;
+  border: 10px solid transparent;
+  display: block;
+  height: 0;
+  width: 0; 
+}
+
+
+
+// desc: 样式
+// type: 箭头方向
+// --------------------------------------------------
+.h-tooltip-placement-right {
+  border-left-width: 0;
+  border-right-color: @default;
+}
+
+.h-tooltip-placement-left {
+  border-right-width: 0;
+  border-left-color: @default;
+}
+
+.h-tooltip-placement-bottom {
+  border-top-width: 0;
+  border-bottom-color: @default;
+}
+
+.h-tooltip-placement-top {
+  border-bottom-width: 0;
+  border-top-color: @default;
+}
+
+// desc: 样式
+// type: 语义样式
+// --------------------------------------------------
+.h-tooltip-semantic-dark {
+  .h-tooltip-semantic(@gray-30);
+  color: white;
+}
+
+.h-tooltip-semantic-primary {
+  .h-tooltip-semantic(@primary);
+}
+
+.h-tooltip-semantic-success {
+  .h-tooltip-semantic(@success);
+}
+
+.h-tooltip-semantic-info {
+  .h-tooltip-semantic(@info);
+}
+
+.h-tooltip-semantic-warning {
+  .h-tooltip-semantic(@warning);
+}
+
+.h-tooltip-semantic-danger {
+  .h-tooltip-semantic(@danger);
+}
+
+// desc: 样式
+// type: 圆角类型
+// --------------------------------------------------
+.h-tooltip-radius-small {
+  border-radius: @border-radius-small;
+}
+
+.h-tooltip-radius-large {
+  border-radius: @border-radius-large;
+}
+
+
+// desc: 样式
+// type: 大小尺寸
+// --------------------------------------------------
+.h-tooltip-size-large {
+  min-height: @tooltip-large-height;
+  padding: @tooltip-large-padding;
+}
+
+.h-tooltip-size-small {
+  min-height: @tooltip-small-height;
+  padding: @tooltip-small-padding;
+}
+
+
+
+
+// desc: 样式
+// type: 动画样式
+// --------------------------------------------------
+.h-tooltip-fade-enter-active, .h-tooltip-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.h-tooltip-fade-enter, .h-tooltip-fade-leave-to {
+  opacity: 0;
+}
+
+

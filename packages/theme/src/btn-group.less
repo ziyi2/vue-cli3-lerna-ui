@@ -1,0 +1,238 @@
+// file: btn-group.less
+// data: 2017/10/16
+// auth: ziyi2
+// desc: 按钮组样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-btn-semantic-disabled() {
+  .h-btn-group {
+    .h-btn[class*=h-btn-semantic-] {
+      color: @font-color;
+      border: 1px solid @gray-80;
+      background-color: transparent;
+    
+      &:hover,
+      &:focus {
+        border-color: @gray-70;
+        background-color: transparent;
+      }
+     
+      &:active {
+        border-color: @gray-80;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.h-btn-shadow-disabled() {
+  .h-btn-group {
+    .h-btn.h-btn-shadow {
+      .box-shadow(none);
+    }
+  }
+}
+
+
+.h-btn-radius-disabled() {
+  .h-btn-group {
+    .h-btn[class*=h-btn-radius-] {
+      border-radius: @border-radius-none;
+    }
+  }
+}
+
+.h-btn-size-disabled() {
+  .h-btn-group {
+    .h-btn[class*=h-btn-size-] {
+      height: @btn-group-default-height;  // 兼容IE
+      padding: @btn-group-default-padding;
+    }
+  }  
+}
+
+
+.h-btn-group-semantic(@color) {
+  button.h-btn {
+    background-color: lighten(@color, 10%);
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: lighten(@color, 5%);
+      border-color: transparent;
+    }
+
+    &:active {
+      background-color: lighten(@color, 10%);
+      border-color: transparent;
+    }
+  }  
+}
+
+
+
+
+.h-btn-group-radius(@radius) {
+  button.h-btn {            // 包含单个h-btn组件生效
+    border-radius: @radius;
+  }
+
+  .h-btn:not(:first-child):not(:last-child) {
+    border-radius: @border-radius-none;
+  }
+
+  .h-btn:first-child:not(:last-child) {
+    .border-right-radius(@border-radius-none);
+    .border-left-radius(@radius);
+  }
+
+  .h-btn:last-child:not(:first-child) {
+    .border-right-radius(@radius);
+    .border-left-radius(@border-radius-none);
+  }
+}
+
+
+
+
+.h-btn-group-size(@size, @height) {
+  button.h-btn {   
+    height: @height;          // 兼容IE
+    padding: @size;
+  }
+}
+
+
+// desc: 样式
+// type: h-btn组件属性样式禁止
+// --------------------------------------------------
+.h-btn-semantic-disabled();   
+.h-btn-shadow-disabled();   
+.h-btn-radius-disabled();  
+.h-btn-size-disabled(); 
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-btn-group {
+  display: inline-block;
+  // vertical-align: middle;
+  .clearfix();
+
+  button.h-btn {
+    float: left;
+    border: 1px solid @gray-80;
+    .box-shadow(none);
+
+    &:focus ,
+    &:hover {
+      background-color: transparent;
+      border-color: @gray-70;
+      z-index: @btn-group-index;
+    }
+  
+    &:active {
+      background-color: transparent;
+      border-color: @gray-80;
+      z-index: @btn-group-index;
+    }
+  }
+}
+
+.h-btn-group {
+  .h-btn + .h-btn,
+  .h-btn + .h-btn-group,
+  .h-btn-group + .h-btn,
+  .h-btn-group + .h-btn-group {
+    margin-left: -1px;
+    float: left;
+  }
+
+  .h-btn:not(:last-child) {
+    margin-left: -1px;            // 兼容IE
+  } 
+}
+
+.h-btn + .h-btn-group,
+.h-btn-group + .h-btn,
+.h-btn-group + .h-btn-group {
+  margin-left: @margin-left-default;
+}
+
+
+// desc: 样式
+// type: 语义类型
+// --------------------------------------------------
+.h-btn-group.h-btn-group-semantic-default {
+  .h-btn-group-semantic(@default);
+}
+
+.h-btn-group.h-btn-group-semantic-primary {
+  .h-btn-group-semantic(@primary);
+}
+
+.h-btn-group.h-btn-group-semantic-success {
+  .h-btn-group-semantic(@success);
+}
+
+.h-btn-group.h-btn-group-semantic-info {
+  .h-btn-group-semantic(@info);
+}
+
+.h-btn-group.h-btn-group-semantic-warning {
+  .h-btn-group-semantic(@warning);
+}
+
+.h-btn-group.h-btn-group-semantic-danger {
+  .h-btn-group-semantic(@danger);
+}
+
+
+// desc: 样式
+// type: 圆角类型
+// --------------------------------------------------
+.h-btn-group.h-btn-group-radius-small {
+  .h-btn-group-radius(@border-radius-small);
+}
+
+.h-btn-group.h-btn-group-radius-large {
+  .h-btn-group-radius(@border-radius-large);
+}
+
+.h-btn-group.h-btn-group-radius-circle {
+  .h-btn-group-radius(@btn-group-radius-circle);
+}
+
+
+// desc: 样式
+// type: 阴影
+// --------------------------------------------------
+.h-btn-group-shadow {
+  .box-shadow(@box-shadow-base);
+  border: none;
+}
+
+
+
+// desc: 样式
+// type: 大小
+// --------------------------------------------------
+.h-btn-group.h-btn-group-size-large {
+  .h-btn-group-size(@btn-group-large-padding, @btn-group-large-height);
+}
+
+.h-btn-group.h-btn-group-size-small {
+  .h-btn-group-size(@btn-group-small-padding, @btn-group-small-height);
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@ziyi2/button",
+  "version": "0.1.0",
+  "description": "button component",
+  "main": "lib/index.common.js",
+  "author": "ziyi2",
+  "license": "ISC",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --formats commonjs --name index index.js"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.5.0",
+    "@vue/cli-plugin-eslint": "^3.5.0",
+    "@vue/cli-service": "^3.5.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "lerna": "^3.13.1",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

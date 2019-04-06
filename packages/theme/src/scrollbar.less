@@ -1,0 +1,33 @@
+// file: scrollbar.less
+// data: 2017/11/15
+// auth: ziyi2
+// desc: 滚动条样式
+// --------------------------------------------------
+@import "./utils/var.less";
+
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 6px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: @gray-90; 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: @gray-90;
+}

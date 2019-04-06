@@ -1,0 +1,259 @@
+// file: input.less
+// data: 2017/10/31
+// auth: ziyi2
+// desc: 输入框样式
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@input-text-default-width:        200px;
+@input-textarea-default-width:    2 * @input-text-default-width;   
+@input-textarea-min-height:       96px;     // line-height * 4 + 2*border + 2*padding = 96px 默认显示4行数据
+@input-textarea-max-height:       216px;    // line-height * 10 + ...
+
+@input-inset-box-shadow:          inset 0 1px 2px @gray-90;  
+@input-outset-box-shadow:         0 0 5px lighten(@gray-70, 15%);
+
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-input-semantic(@color) {
+  border: 1px solid lighten(@color, 10%);
+
+  &:focus {
+    // box-shadow: 0 0 3px lighten(@color, 10%);
+    // border: 1px solid lighten(@color, 10%);
+  }
+}
+
+
+
+// desc: 基本样式
+// --------------------------------------------------
+.h-input {
+
+  display: inline-block;
+  vertical-align: bottom;
+  position: relative;
+
+  .h-input-text,.h-input-textarea {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid @gray-80;
+    border-radius: @border-radius-none;
+    display: inline-block;
+    height: @input-default-height;
+    line-height: @line-height-computed;
+    outline: none;
+    padding: @input-default-padding;
+    text-shadow: none;
+    // box-shadow: @input-inset-box-shadow;
+
+
+    .fade-border();
+
+    &:focus {
+      // box-shadow: 0 0 5px @gray-80;
+      // border-color: @gray-80;
+      // box-shadow: @input-outset-box-shadow;
+    }
+  }
+
+  .h-input-textarea {
+    width: @input-textarea-default-width;
+    min-height: @input-textarea-min-height;
+    max-height: @input-textarea-max-height;
+    display: block;
+  }
+}
+
+.h-input + .h-input {
+  margin-left:  @margin-left-default;
+}
+
+
+// desc: 样式
+// type: 禁用状态
+// --------------------------------------------------
+.h-input-text[disabled],.h-input-textarea[disabled] {
+  .disabled();
+  background-color: @gray-90;
+}     
+
+
+// desc: 样式
+// type: 禁用状态
+// --------------------------------------------------
+.h-input-semantic-primary {
+  .h-input-text,.h-input-textarea {
+    .h-input-semantic(@primary);
+  }
+}
+
+.h-input-semantic-success {
+  .h-input-text,.h-input-textarea {
+    .h-input-semantic(@success);
+  }
+}
+
+.h-input-semantic-warning {
+  .h-input-text,.h-input-textarea {
+    .h-input-semantic(@warning);
+  }
+}
+
+.h-input-semantic-info {
+  .h-input-text,.h-input-textarea {
+    .h-input-semantic(@info);
+  }
+}
+
+.h-input-semantic-danger {
+  .h-input-text,.h-input-textarea {
+    .h-input-semantic(@danger);
+  }
+}
+
+// desc: 样式
+// type: 宽度100%
+// --------------------------------------------------
+.h-input-width-full {
+  width: 100%;          // 设置了h-input这个div的width100%以后还需要设置input和textarea的样式100%
+}
+
+// desc: 样式
+// type: 圆角
+// --------------------------------------------------
+.h-input-radius-small {
+  .h-input-text,.h-input-textarea {
+    border-radius: @border-radius-small;
+  }
+}
+
+
+.h-input-radius-large {
+  .h-input-text,.h-input-textarea {
+    border-radius: @border-radius-large;
+  }
+}
+
+
+.h-input-radius-circle {
+  .h-input-text {
+    border-radius: @input-radius-circle;
+  }
+
+  .h-input-textarea {
+    border-radius: 2 * @border-radius-large;
+  }
+}
+
+
+// desc: 样式
+// type: 尺寸
+// --------------------------------------------------
+
+.h-input-size-small {
+  .h-input-text {
+    height: @input-small-height;
+    padding: @input-small-padding;
+  }
+}
+
+.h-input-size-large {
+  .h-input-text {
+    height: @input-large-height;
+    padding: @input-large-padding;
+  }
+}
+
+// desc: 样式
+// type: 图标
+// --------------------------------------------------
+
+.h-input {
+
+  .h-icon {
+    width: @input-default-height;
+    line-height: @input-default-height;
+    position: absolute;
+    height: 100%;
+    text-align: center;
+    color: @gray-70;
+  }
+
+  .h-icon-left {
+    left:0;
+    top:0;
+  }
+
+  .h-icon-right {
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: @input-icon-index;
+    .fade-color();
+
+    &:hover {
+      color: @font-color;
+    }
+  }
+}
+
+
+// 因尺寸调整padding
+.h-input-size-small {
+  .h-icon {
+    width: @input-small-height;
+    line-height: @input-small-height;
+  }
+}
+
+
+.h-input-size-large {
+  .h-icon {
+    width: @input-large-height;
+    line-height: @input-large-height;
+  }
+}
+
+
+
+.h-input-left-icon {
+  .h-input-text {
+    padding-left: @input-default-height;
+  }
+}
+
+.h-input-left-icon.h-input-size-small {
+  .h-input-text {
+    padding-left: @input-small-height;
+  }
+}
+
+.h-input-left-icon.h-input-size-large {
+  .h-input-text {
+    padding-left: @input-large-height;
+  }
+}
+
+.h-input-right-icon {
+  .h-input-text {
+    padding-right: @input-default-height;
+  }
+}
+.h-input-right-icon.h-input-size-small {
+  .h-input-text {
+    padding-right: @input-small-height;
+  }
+}
+
+.h-input-right-icon.h-input-size-large {
+  .h-input-text {
+    padding-right: @input-large-height;
+  }
+}

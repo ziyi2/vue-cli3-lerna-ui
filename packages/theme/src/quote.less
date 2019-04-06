@@ -1,0 +1,114 @@
+// file: quote.less
+// data: 2017/09/24
+// auth: ziyi2
+// desc: 引用样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+@blockquote-border-default-color:       @gray-90;
+@blockquote-border-primary-color:       lighten(@primary, 10%);
+@blockquote-border-success-color:       lighten(@success, 10%);
+@blockquote-border-info-color:          lighten(@info, 10%);
+@blockquote-border-warning-color:       lighten(@warning, 10%);
+@blockquote-border-danger-color:        lighten(@danger, 10%);
+
+@blockquote-footer-color:               @gray-60;
+
+@blockquote-radius-small:               2 * @border-radius-base;
+@blockquote-radius-large:               2 * @border-radius-large;
+
+// desc: 混合
+// --------------------------------------------------
+
+
+// desc: 样式
+// type: 基本 
+// --------------------------------------------------
+.h-blockquote {
+  padding: (@line-height-computed/2) @line-height-computed;
+  margin: 0 0 @line-height-computed;
+  font-size: (@font-size-base * 1.25);
+  border:  1px solid @blockquote-border-default-color; 
+  border-left: 5px solid @blockquote-border-default-color;
+
+  &:after, &:before {
+    content: ''
+  }
+
+  p,ul,ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  footer {
+    font-size: 80%;
+    line-height: @line-height-base;
+    color: @blockquote-footer-color;
+
+    text-align: left;
+    &:before {
+      content: '\2014 \00A0'; 
+    }
+    &:after { content: ''};
+  }
+}
+
+
+// desc: 样式
+// type: 颜色类型
+// --------------------------------------------------
+.h-blockquote-semantic-default {
+  border-left: 5px solid @blockquote-border-default-color;
+}
+
+.h-blockquote-semantic-primary {
+  border-left: 5px solid @blockquote-border-primary-color;
+}
+.h-blockquote-semantic-success {
+  border-left: 5px solid @blockquote-border-success-color;
+}
+.h-blockquote-semantic-info {
+  border-left: 5px solid @blockquote-border-info-color;
+}
+.h-blockquote-semantic-warning {
+  border-left: 5px solid @blockquote-border-warning-color;
+}
+.h-blockquote-semantic-danger {
+  border-left: 5px solid @blockquote-border-danger-color;
+}
+
+.h-blockquote-radius-small {
+  .border-right-radius(@blockquote-radius-small);
+  .border-left-radius(0);
+}
+
+.h-blockquote-radius-large {
+  .border-right-radius(@blockquote-radius-large);
+  .border-left-radius(0);
+}
+
+
+
+
+// desc: 样式
+// type: 阴影
+// --------------------------------------------------
+.h-blockquote-shadow {
+  .box-shadow(@box-shadow-base);
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+
+
+
+
+

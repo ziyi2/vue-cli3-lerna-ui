@@ -1,0 +1,448 @@
+// file: nav.less
+// data: 2017/11/14
+// auth: ziyi2
+// desc: 导航栏样式
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@navbar-min-height:                 66px;
+@navbar-margin-bottom:              @margin-bottom-default;
+@navbar-padding-default:            0 30px;
+@navbar-default-bg:               #fff;
+@navbar-item-padding:               15px;
+@navbar-brand-font:                 20px;
+@navbar-brand-line-height:          36px;
+@navbar-brand-span-width:           20px;
+@navbar-brand-span-height:          1px;
+@navbar-default-margin:             15px;
+@navbar-item-responsive-height:     46px;
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-navbar-semantic(@color) {
+  background-color: @color;
+  border: darken(@color, 10%);
+
+  .h-navbar-burger {
+    background-color: darken(@color, 5%);
+  }
+
+  .h-navbar-brand>a {
+    &:hover {
+      background-color: darken(@color, 5%);
+    }
+  }
+
+  .h-navbar-menu>.h-navbar-item {
+    &:hover {
+      background-color: darken(@color, 5%);
+    }
+  }
+
+  .h-dropdown { 
+    &:hover {
+      background-color: darken(@color, 5%);
+    }
+  }
+}
+
+
+
+// desc: nav基本样式
+// --------------------------------------------------
+.h-navbar {
+  width: 100%;
+  min-height: @navbar-min-height;
+  margin-bottom: @navbar-margin-bottom;
+  padding: @navbar-padding-default;
+  background-color: @navbar-default-bg;
+  margin: auto;
+  box-shadow: @box-shadow-base;
+  border: 1px solid @gray-90;
+  .clearfix();
+  .user-select(none);
+
+  /* navbar-brand */
+  .h-navbar-brand {
+    // display: inline-block;
+    float: left;
+   
+    .clearfix();
+
+    a {
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      line-height: @navbar-brand-line-height;
+      font-size: @navbar-brand-font;
+      color: @font-color;
+      padding: @navbar-item-padding;
+      cursor: pointer;
+
+      &:hover {
+        background-color: @gray-95;
+        color: @font-color;
+      }
+    }
+  }
+
+  /* navbar-burger */
+  .h-navbar-burger {
+    float: right;
+    background-color: @gray-95;
+    border: none;
+    position: relative;
+    width:  @navbar-min-height;
+    height: @navbar-min-height;
+    padding: 0;
+
+    outline-style: none;
+
+    &:hover {
+      background-color: @gray-90;
+    }
+
+    span {
+      background-color: @font-color;
+      position: absolute;
+      height: @navbar-brand-span-height;
+      display: block;
+      width: @navbar-brand-span-width;
+      transition: none 86ms ease-out;
+      transition-property: left,opacity,transform,-webkit-transform;
+      top: 50%;
+      left: 50%;
+
+      &:nth-child(1) {
+        margin-top: -9px;
+        margin-left: -10px;
+      }
+
+      &:nth-child(2) {
+        margin-left: -10px;
+      }
+
+      &:nth-child(3) {
+        margin-left: -10px;
+        margin-top: 9px;
+      }
+    }
+  }
+
+  /* navbar-menu */
+  .h-navbar-menu {
+    display: block;
+    overflow: visible;
+    width: auto;
+    height: auto;
+    .clearfix();
+  }
+}
+
+
+// desc: nav固定顶部样式
+// --------------------------------------------------
+.h-navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: @navbar-fixed-index;
+}
+
+// desc: nav动画样式
+// --------------------------------------------------
+.h-navbar-fade-enter-active, .h-navbar-fade-leave-active {
+  .fade-all();
+}
+.h-navbar-fade-enter, .h-navbar-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-66px);
+}
+
+// desc: nav语义色
+// --------------------------------------------------
+.h-navbar.h-navbar-semantic-default {
+  .h-navbar-semantic(@gray-95);
+}
+
+.h-navbar.h-navbar-semantic-primary {
+  .h-navbar-semantic(lighten(@primary, 10%));
+}
+
+.h-navbar.h-navbar-semantic-success {
+  .h-navbar-semantic(lighten(@success, 10%));
+}
+
+.h-navbar.h-navbar-semantic-info {
+  .h-navbar-semantic(lighten(@info, 10%));
+}
+
+.h-navbar.h-navbar-semantic-warning {
+  .h-navbar-semantic(lighten(@warning, 10%));
+}
+
+.h-navbar.h-navbar-semantic-danger {
+  .h-navbar-semantic(lighten(@danger, 10%));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// desc: nav-item基本样式
+// --------------------------------------------------
+.h-navbar-menu {
+  .h-navbar-item {
+    float: left;
+    padding: @navbar-item-padding;
+    line-height: @navbar-brand-line-height + 1;    // 这里有问题，到时候修复
+    cursor: pointer;
+    .fade-background();
+
+    &:hover {
+      background-color: @gray-95;
+      a {
+        color: @font-color; 
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: @font-color;
+    }
+  }
+}
+
+
+// desc: nav-item disabled样式
+// --------------------------------------------------
+.h-navbar-menu {
+  .h-navbar-item.h-navbar-item-disabled {
+    .disabled();
+  }
+}
+
+// desc: nav-item 对齐方式
+// --------------------------------------------------
+.h-navbar-menu {
+  .h-navbar-item.h-navbar-item-align-right {
+    float: right;
+  }
+
+  .h-navbar-item.h-navbar-item-align-left {
+    float: left;
+  }
+}
+
+
+// desc: nav下的h-dropdown样式覆盖
+// --------------------------------------------------
+.h-navbar {
+  .h-dropdown {
+    float: left;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      background-color: @gray-95;
+    }
+
+    .h-btn {
+      color: @font-color !important; 
+    }
+
+    .h-dropdown-trigger {
+      .clearfix();              // .h-navbar .h-navbar-menu .h-btn有float属性
+      .h-btn {
+        border: none;
+        color: @font-color;
+        padding: @navbar-item-padding;
+        line-height: @navbar-brand-line-height - 1;
+        height: @navbar-min-height;
+        margin: 0;
+      }
+    }
+  }
+}
+
+
+// desc: nav下的form样式覆盖
+// --------------------------------------------------
+.h-navbar {
+  .h-navbar-menu {
+    .h-btn {
+      float: left;
+      height: @btn-default-height;
+      line-height: @line-height-computed;
+      padding: @btn-default-padding;      
+      margin: @navbar-default-margin;
+    }
+
+    .h-input {
+      float: left;
+
+      .h-input-text {
+        padding: @input-default-padding;
+        line-height: @input-default-height;
+        height: @input-default-height;
+      }
+
+      .h-icon {
+        line-height: @input-default-height;
+        height: @input-default-height;
+      }
+      margin: @navbar-default-margin;
+    }
+
+    .h-btn + .h-input,
+    .h-input + .h-btn {
+      margin-left: 0;
+    }
+  }
+}
+
+
+
+
+
+// desc: navbar 响应式设计
+// --------------------------------------------------
+@media (min-width: @screen-sm-min) {
+  .h-navbar-burger {
+    display: none;
+  }
+}
+
+@media (max-width: @screen-sm-min) {
+  .h-navbar {
+    .h-navbar-brand {
+      display: block;
+      float: none;
+    }
+  
+    .h-navbar-menu {
+      display: none;
+      .clearfix();
+    }
+  }
+
+  .h-navbar.h-navbar-show {
+
+    // desc: 开关导航的按钮动画
+    // --------------------------------------------------
+    .h-navbar-burger-close {
+      span {
+        width: 26px;
+       
+        &:nth-child(1) {
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          -ms-transform: rotate(45deg); 		/* IE 9 */
+  
+          transform-origin: left top;
+          -webkit-transform-origin: left top;
+          -ms-transform-origin: left top;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg); 		/* IE 9 */
+  
+          transform-origin: left bottom;
+          -webkit-transform-origin: left bottom;
+          -ms-transform-origin: left bottom;
+        }
+      }
+     
+    }
+
+    .h-navbar-menu {
+      display: block;
+      padding: 0;
+      margin-left: -15px;
+      margin-right: -15px;
+      // border-top: 1px solid @gray-90;
+       
+      .h-navbar-item {
+        display: block;
+        float: none;
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 51px;
+        line-height: 20px;
+        border-top: 1px solid @gray-90;
+      }
+
+      // desc: nav下的form样式覆盖
+      // --------------------------------------------------
+      .h-input {
+        display: block;
+        float: none;
+        padding: 0 30px 0 30px;
+        margin: 0;
+        border-top: 1px solid @gray-90;
+        .h-input-text {
+          margin-top: 10px;
+          margin-bottom: 10px;
+          width: 100% !important;
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .h-icon {
+          top: 10px;
+          right: 30px;
+        }
+      }
+
+      .h-btn {
+        display: block;
+        float: none !important;
+        margin: 10px 30px 10px 30px;
+      }
+
+      // desc: nav下的h-dropdown样式覆盖
+      // --------------------------------------------------
+      .h-dropdown {
+        display: block;
+        float: none !important;
+        border-top: 1px solid @gray-90;
+        height: 51px;
+        padding: 0 30px 0 30px;
+
+        .h-btn {
+          margin: 0;
+          width: 100%;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: left;
+          display: block;
+          height: 51px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+
+}
+

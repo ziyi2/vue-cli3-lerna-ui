@@ -1,0 +1,121 @@
+// file: tag-group.less
+// data: 2017/12/14
+// auth: ziyi2
+// desc: 标签组样式
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+.h-tag-radius-disabled() {
+  .h-tag-group {
+    .h-tag[class*=h-tag-radius-] {
+      border-radius: @border-radius-none;
+    }
+  }
+}
+
+.h-tag-size-disabled() {
+  .h-tag-group {
+    .h-tag[class*=h-tag-size-] {
+      height: @tag-group-default-height;  // 兼容IE
+      padding: @tag-group-default-padding;
+    }
+  }
+ 
+}
+
+
+
+.h-tag-group-radius(@radius) {
+  span.h-tag {            // 包含单个h-tag组件生效
+    border-radius: @radius;
+  }
+
+  .h-tag:not(:first-child):not(:last-child) {
+    border-radius: @border-radius-none;
+  }
+
+  .h-tag:first-child:not(:last-child) {
+    .border-right-radius(@border-radius-none);
+    .border-left-radius(@radius);
+  }
+
+  .h-tag:last-child:not(:first-child) {
+    .border-right-radius(@radius);
+    .border-left-radius(@border-radius-none);
+  }
+}
+
+
+
+// desc: 样式
+// type: 基本样式
+// --------------------------------------------------
+
+.h-tag-group {
+  display: inline-block;
+  .clearfix();
+
+  .h-tag {
+    float: left;
+  }
+  .h-tag + .h-tag,
+  .h-tag + .h-tag-group,
+  .h-tag-group + .h-tag,
+  .h-tag-group + .h-tag-group {
+    margin-left: -1px;
+  }
+  .h-tag:not(:last-child) {
+    margin-left: -1px;            // 兼容IE
+  } 
+}
+
+
+.h-tag-group-close {
+  background: transparent;
+}
+
+
+// desc: 样式
+// type: h-tag组件属性样式禁止
+// --------------------------------------------------
+.h-tag-radius-disabled();  
+.h-tag-size-disabled(); 
+
+
+// desc: 尺寸
+// type: 
+// --------------------------------------------------
+.h-tag-group.h-tag-group-size-large {
+  span.h-tag {
+    height: @tag-group-large-height;
+    padding: @tag-group-large-padding;
+  }
+ 
+}
+
+.h-tag-group.h-tag-group-size-larger {
+  span.h-tag {
+    height: @tag-group-larger-height;
+    padding: @tag-group-larger-padding;
+  }
+}
+
+// desc: 圆角
+// type: 
+// --------------------------------------------------
+
+
+.h-tag-group.h-tag-group-radius-small {
+  .h-tag-group-radius(@border-radius-small);
+}
+
+.h-tag-group.h-tag-group-radius-large {
+  .h-tag-group-radius(@border-radius-large);
+}
+
+.h-tag-group.h-tag-group-radius-circle {
+  .h-tag-group-radius(@tag-group-radius-circle);
+}
+

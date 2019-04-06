@@ -1,0 +1,119 @@
+// file: tag.less
+// data: 2017/12/14
+// auth: ziyi2
+// desc: 标签样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+
+.h-tag-semantic(@color) {
+  background-color: lighten(@color, 10%);
+}
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-tag {
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+  padding: @tag-default-padding;
+  height: @tag-default-height;
+  line-height: @line-height-computed;
+  background-color: @gray-95;
+  border: 1px solid transparent;
+  vertical-align: middle;
+
+  span {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-weight: 700;
+    color: inherit;
+    margin-left: 5px;
+    opacity: .5;
+    cursor: pointer;
+    .user-select(none);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// desc: 样式
+// type: 语义类型
+// --------------------------------------------------
+.h-tag-semantic-dark {
+  .h-tag-semantic(@gray-30);
+  color: white;
+}
+
+.h-tag-semantic-primary {
+  .h-tag-semantic(@primary);
+}
+
+.h-tag-semantic-success {
+  .h-tag-semantic(@success);
+}
+
+.h-tag-semantic-info {
+  .h-tag-semantic(@info);
+}
+
+.h-tag-semantic-warning {
+  .h-tag-semantic(@warning);
+}
+
+.h-tag-semantic-danger {
+  .h-tag-semantic(@danger);
+}
+
+
+// desc: 样式
+// type: 圆角
+// --------------------------------------------------
+
+.h-tag-radius-small {
+  border-radius: @border-radius-small;
+}
+
+.h-tag-radius-large {
+  border-radius: @border-radius-large;
+}
+
+.h-tag-radius-circle {
+  border-radius: @tag-radius-circle;
+}
+
+// desc: 样式
+// type: 尺寸
+// --------------------------------------------------
+
+.h-tag-size-large {
+  height: @tag-large-height;
+  padding: @tag-large-padding;
+}
+
+.h-tag-size-larger {
+  height: @tag-larger-height;
+  padding: @tag-larger-padding;
+}
+
+
+
+// desc: 样式
+// type: 动画
+// --------------------------------------------------
+.h-tag-fade-enter-active, .h-tag-fade-leave-active {
+  .fade-all;
+}
+.h-tag-fade-enter, .h-tag-fade-leave-to {
+  opacity: 0;
+}

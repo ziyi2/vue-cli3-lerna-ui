@@ -1,0 +1,309 @@
+// file: table.less
+// data: 2017/09/29
+// auth: ziyi2
+// desc: 表格样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@table-cell-padding:      10px;
+@table-td-border:         1px solid @gray-90;
+@table-th-border:         @table-td-border;
+@table-caption-border:    @table-td-border;
+@table-border:            @table-td-border;
+@table-tr-bgColor:        @gray-95;
+@table-tr-hover-bgColor:  @gray-95;
+
+@table-deafult-bg:        @table-tr-bgColor;
+@table-success-bg:        lighten(@success, 10%);
+@table-info-bg:           lighten(@info, 10%);
+@table-warning-bg:        lighten(@warning, 10%);
+@table-danger-bg:         lighten(@danger, 10%);
+
+@table-th-span-margin:    5px;
+@table-th-i-left:         -6.86px;
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-table-align(@align) {
+  .h-table-align-@{align} {
+    > thead,
+    > tbody {
+      > tr {
+        > th,
+        > td {
+          text-align: @align;
+        }
+      }
+    }
+    
+  }
+}
+
+.h-table-caption-side(@position) {
+  .h-table > caption.h-caption-side-@{position} {
+    caption-side: @position;
+  }
+}
+
+.h-table-caption-align(@position) {
+  .h-table > caption.h-caption-align-@{position} {
+    text-align: @position;
+  }
+}
+
+.h-table-row(@state, @background) {
+  .h-table > tbody > tr.h-tr-@{state} {
+    background: @background;
+    &:hover {
+      background: darken(@background, 3%);
+    }
+  }
+}
+
+.h-table-head(@state, @background) {
+  .h-table > thead > tr.h-tr-@{state} {
+    background: @background;
+  }
+}
+
+
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-table {
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  margin-bottom: @line-height-computed;
+  font-size: @font-size-base;
+
+  > thead,
+  > tbody {
+    > tr {
+      .fade-background();
+      > td {
+        padding: @table-cell-padding;
+        line-height: @line-height-base;
+        border-bottom: @table-td-border;
+        text-align: left;                     // ie下给table加此属性无效果
+        height: @table-default-td-height;
+      }
+
+      > th {
+        height: @table-default-th-height;
+        border-bottom: @table-th-border;
+        padding: 1.3 * @table-cell-padding;
+        line-height: 1.3 * @line-height-base;
+        text-align: left;                     // ie下给table加此属性无效果
+      
+        span {
+          margin-left: @table-th-span-margin;
+
+          i {
+            font-size: 14px;
+          }
+        }
+      }
+
+      > th,
+      > td {
+        word-break: break-all;        // 英文单词允许换行，不然表格的col width设置会失效，table的单元格会根据内容进行宽度调整
+      }
+
+      > th.h-th-sortable {
+        cursor: pointer;
+      }
+    }
+  }
+
+  > thead {
+    > tr > th {
+      border-top: @table-th-border;  
+    }
+  }
+
+  > caption {
+    padding: @table-cell-padding;
+    color: @gray-60;
+    line-height:  @line-height-base;
+    font-size: @font-size-base;  
+  }
+}
+
+
+
+
+// desc: 样式
+// type: 阴影
+// --------------------------------------------------
+.h-table-shadow {
+  .box-shadow(@box-shadow-base);
+}
+
+// desc: 样式
+// type: 表格标题位置
+// --------------------------------------------------
+.h-table-caption-side(top);
+.h-table-caption-side(bottom);
+.h-table-caption-align(left);
+.h-table-caption-align(right);
+.h-table-caption-align(center);
+
+
+// desc: 样式
+// type: 表格对齐方式
+// --------------------------------------------------
+.h-table-align(left);
+.h-table-align(right);
+.h-table-align(center);
+
+// desc: 样式
+// type: 边框表格
+// --------------------------------------------------
+.h-table-border {
+  border: @table-td-border;
+}
+
+
+// desc: 样式
+// type: 表格是否有格子
+// --------------------------------------------------
+.h-table-grid {
+  > thead,
+  > tbody {
+    > tr {
+      > th,
+      > td {
+        border: @table-td-border;
+      }
+    } 
+    
+    > tr {
+      > th {
+        border-bottom: @table-th-border;
+      }
+    }
+  }
+}
+
+
+
+
+// desc: 样式
+// type: 条纹表格(支持IE9以上)
+// --------------------------------------------------
+.h-table-stripe {
+  > tbody > tr:nth-child(even) {
+    background-color: @table-tr-bgColor;
+  }
+}
+
+// desc: 样式
+// type: hover表格
+// --------------------------------------------------
+.h-table-hover {
+  > tbody > tr:hover {
+    background-color: @table-tr-hover-bgColor;
+  }
+}
+
+// desc: 样式
+// type: 语义条纹
+// --------------------------------------------------
+.h-table-head(default; @table-deafult-bg);
+.h-table-head(success; @table-success-bg);
+.h-table-head(info; @table-info-bg);
+.h-table-head(warning; @table-warning-bg);
+.h-table-head(danger; @table-danger-bg);
+
+
+.h-table-row(success; @table-success-bg);
+.h-table-row(info; @table-info-bg);
+.h-table-row(warning; @table-warning-bg);
+.h-table-row(danger; @table-danger-bg);
+
+
+// desc: 样式
+// type: 文本溢出处理
+// --------------------------------------------------
+.h-table > tbody > tr > td.h-td-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width:0;
+}
+
+
+
+// desc: 样式
+// type: 响应式table
+// --------------------------------------------------
+@media (max-width: @screen-sm-min) {
+  .h-table-responsive {
+    width: 100%;
+    margin-bottom: @line-height-computed;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border-right: @table-border;
+    border-left: @table-border;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+    .box-shadow(@box-shadow-base);
+
+    .h-table-shadow {
+      .box-shadow(none);
+    }
+
+    .h-table {
+      margin-bottom: 0;
+  
+      > thead,
+      > tbody {
+        > tr {
+          > th,
+          > td {
+            white-space: nowrap;
+          }
+
+          > td.h-td-ellipsis {
+            max-width: 100%;
+          }
+        }
+      }
+
+      > caption {
+        display: none;
+      }
+    }
+    
+    .h-table-border {
+      border: 0;
+
+      > thead,
+      > tbody {
+        > tr {
+          > th:first-child,
+          > td:first-child {
+            border-left: 0;
+          }
+          > th:last-child,
+          > td:last-child {
+            border-right: 0;
+          }
+        }
+      }
+    }  
+  }
+  
+}
+

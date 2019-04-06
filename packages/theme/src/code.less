@@ -1,0 +1,145 @@
+// file: code.less
+// data: 2017/09/25
+// auth: ziyi2
+// desc: 代码块样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+@code-family:             Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@font-light-color:      #4d4d4c; 
+@font-dark-color:         darken(#fff, 10%); 
+@font-lines-dark-color:   darken(@font-dark-color, 40%);
+@font-lines-light-color:  lighten(@font-light-color, 40%); 
+
+@code-light-color:      #f7f7f7;
+@code-dark-color:       rgb(43, 42, 42);
+@code-lines-light-color:#eff2f3;
+@code-lines-dark-color:   @code-dark-color;
+
+@code-keyword-color:    #cc99cc;
+@code-literal-color:      @info;
+@code-builtin-color:    #f8AE48;
+@code-number-color:       @danger;
+@code-function-color:   #6699cc;
+@code-reg-color:        #22863a;
+@code-template-color:   #6cc56c;
+@code-comment-color:    #8e908c;
+@code-comments-color:   #690;
+
+// desc: 混合
+// --------------------------------------------------
+
+
+
+// desc: 样式
+// type: 基本 
+// --------------------------------------------------
+
+
+.h-code {
+  margin: 0;
+  border-radius: @border-radius-small;
+  margin: (@line-height-computed/2) 0;
+  overflow: auto;
+  width: 100%;
+  
+  pre {
+    display: block;
+    overflow: visible;
+    padding: (@line-height-computed/2);
+    margin: 0;
+    font-family: @code-family;
+    font-size: @font-size-base;
+    // word-break: break-all;
+    // word-wrap: break-word;
+  }
+}
+
+
+.h-code-lines {
+  float: left;
+  text-align: right;
+  .h-code-lines-dark;
+}
+
+.h-code-codes {
+  .h-code-codes-dark
+}
+
+.h-code-codes-dark {
+  color: @font-dark-color;
+  background-color: @code-dark-color;
+}
+
+.h-code-lines-dark {
+  background-color: @code-lines-dark-color;
+  color: @font-lines-dark-color;
+}
+
+.h-code-codes-light {
+  color: @font-light-color;
+  background-color: @code-light-color;
+}
+
+.h-code-lines-light {
+  background-color: @code-lines-light-color;
+  color: @font-lines-light-color;
+}
+
+.h-code-line {
+  height: @line-height-computed;
+  vertical-align: middle;
+}
+
+.h-code-keyword {
+  color: @code-keyword-color;
+}
+
+.h-code-literal {
+  color: @code-literal-color;
+}
+
+.h-code-builtin {
+   color: @code-builtin-color;
+}
+
+.h-code-number {
+  color: @code-number-color;
+}
+
+
+.h-code-function {
+  color: @code-function-color;
+}
+
+
+.h-code-reg {
+  color: @code-reg-color;
+}
+
+.h-code-template {
+  color: @code-template-color;
+}
+
+.h-code-comment {
+  color: @code-comment-color;
+}
+
+.h-code-comments {
+  color: @code-comments-color;
+}
+
+
+// desc: 样式
+// type: 阴影 
+// --------------------------------------------------
+.h-code-shadow {
+  .box-shadow(@box-shadow-base);
+}

@@ -1,0 +1,93 @@
+// file: poper.less
+// data: 2017/12/03
+// auth: ziyi2
+// desc: 提示框样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+
+// desc: 混合
+// --------------------------------------------------
+
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-poper {
+  position: absolute;
+  z-index: @poper-index;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: @poper-default-height;
+  padding: @poper-default-padding;
+  border: 1px solid @gray-90;
+  line-height: @line-height-computed;
+  box-shadow: @box-shadow-base;
+  background: #FFF;
+}
+
+// 会覆盖tooltop的箭头样式
+// .h-tooltip-arrow {
+//   position: absolute;
+//   border: 10px solid transparent;
+//   display: block;
+//   height: 0;
+//   width: 0; 
+// }
+
+// desc: 样式
+// type: 箭头方向
+// --------------------------------------------------
+.h-poper-placement-right {
+  border-left-width: 0;
+  border-right-color: @gray-90;
+}
+
+.h-poper-placement-left {
+  border-right-width: 0;
+  border-left-color: @gray-90;
+}
+
+.h-poper-placement-bottom {
+  border-top-width: 0;
+  border-bottom-color: @gray-90;
+}
+
+.h-poper-placement-top {
+  border-bottom-width: 0;
+  border-top-color: @gray-90;
+}
+
+// desc: 样式
+// type: 圆角类型
+// --------------------------------------------------
+.h-poper-radius-small {
+  border-radius: @border-radius-small;
+}
+
+.h-poper-radius-large {
+  border-radius: @border-radius-large;
+}
+
+
+// desc: 样式
+// type: 动画样式
+// --------------------------------------------------
+.h-poper-fade-enter-active, .h-poper-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.h-poper-fade-enter, .h-poper-fade-leave-to {
+  opacity: 0;
+}
+
+

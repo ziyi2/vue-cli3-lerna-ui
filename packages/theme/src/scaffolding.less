@@ -1,0 +1,196 @@
+// file: scaffolding.less
+// data: 2017/09/21
+// auth: ziyi2
+// desc: 初始化
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+@body-bg:                   #fff;     
+@hr-border:                   @gray-90;
+
+@headings-font-family:        inherit;     //从Body元素继承
+@headings-font-weight:        500;
+@headings-line-height:        1.1;
+@headings-color:              inherit;
+@headings-small-color:        @gray-60;
+
+@font-size-h1:                floor((@font-size-base * 2.6));   // ~36px
+@font-size-h2:                floor((@font-size-base * 2.15));  // ~30px
+@font-size-h3:                ceil((@font-size-base * 1.7));    // ~24px
+@font-size-h4:                ceil((@font-size-base * 1.25));   // ~18px
+@font-size-h5:                @font-size-base;
+@font-size-h6:                ceil((@font-size-base * 0.85));   // ~12px
+
+
+// desc: 混合
+// --------------------------------------------------
+.box-sizing(@box-sizing) {         
+  -webkit-box-sizing: @box-sizing;
+  -moz-box-sizing: @box-sizing;
+  box-sizing: @box-sizing;
+}
+
+// .tab-focus() {
+//   outline: thin dotted;
+//   outline: 5px auto -webkit-focus-ring-color;
+//   outline-offset: -2px;
+// }
+
+// desc: 样式
+// --------------------------------------------------
+
+/* 初始化 */
+* {
+  .box-sizing(border-box);
+}
+
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+/* 全局初始化 */
+html {
+  font-family: @font-family-base;
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @font-color;
+  background-color: @body-bg;
+  position: relative;   /* tooltip等容器 */
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: @link-color;
+  text-decoration: none;
+  outline-style: none;
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+hr {
+  border: none;
+  margin: @line-height-computed 0;
+  border-top: 1px solid @hr-border;
+}
+
+
+h1,h2,h3,h4,h5,h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
+  font-weight: @headings-font-weight;
+  line-height: @headings-line-height;
+  color: @headings-color;
+
+  small, .small{
+    font-weight: normal;
+    line-height: 1;
+    color: @headings-small-color;
+  }
+}
+
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  margin-top: @line-height-computed;
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+
+
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: (@line-height-computed / 2);
+  margin-bottom: (@line-height-computed / 2);
+
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+
+h1, .h1 { font-size: @font-size-h1; }
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { font-size: @font-size-h6; }
+
+p {
+  margin: 0 0 (@line-height-computed / 2);
+}
+
+small, .small {
+  font-size: 85%; 
+}
+
+cite {
+  font-style: normal;             //浏览器默认可能是italic
+}
+
+
+ul,ol {               //普通列表
+  margin-top: 0;
+  margin-bottom: (@line-height-computed / 2);
+  ul,ol {
+    margin-bottom: 0;
+  }
+}
+
+
+dl {                      //定义列表
+  margin-top: 0;  
+  margin-bottom: @line-height-computed;
+}
+
+dt,
+dd {
+  line-height: @line-height-base;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 0;         // 去掉浏览器默认的样式
+}
+
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #999999;
+}
+
+address {
+  margin-bottom: @line-height-computed;
+  font-style: normal;
+  line-height: @line-height-base;
+}
+

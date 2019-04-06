@@ -1,0 +1,207 @@
+// file: tooltip.less
+// data: 2017/12/20
+// auth: ziyi2
+// desc: 信息弹框样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@toast-min-width: 350px;
+@toast-bg: #363636;
+@toast-opacity: 0.92;
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-toast-semantic(@color) {
+  background-color: lighten(@color, 20%);
+  color: darken(@color, 30%);
+}
+
+
+
+
+// desc: 样式
+// --------------------------------------------------
+.h-toast {
+  position: fixed;
+  z-index: @toast-index;
+  padding: @toast-default-padding;
+  min-height: @toast-default-height;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: @toast-radius-circle;
+  display: table;
+  opacity: @toast-opacity;
+  line-height: @line-height-base;
+  .box-shadow(@box-shadow-auxiliary);
+}
+
+
+
+
+// desc: 定位
+// --------------------------------------------------
+.h-toast-top {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.h-toast-top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.h-toast-top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.h-toast-bottom {
+  top: auto;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.h-toast-bottom-left {
+  top: auto;
+  bottom: 20px;
+  left: 20px;
+}
+
+.h-toast-bottom-right {
+  top: auto;
+  bottom: 20px;
+  right: 20px;
+}
+
+
+// desc: 语义类型
+// --------------------------------------------------
+.h-toast-semantic-default {
+  .h-toast-semantic(@default);
+}
+
+.h-toast-semantic-dark {
+  background: @toast-bg;
+  color: @gray-90;
+}
+
+
+.h-toast-semantic-primary {
+  .h-toast-semantic(@primary);
+}
+
+.h-toast-semantic-success {
+  .h-toast-semantic(@success);
+}
+
+.h-toast-semantic-info {
+  .h-toast-semantic(@info);
+}
+
+.h-toast-semantic-warning {
+  .h-toast-semantic(@warning);
+}
+
+.h-toast-semantic-danger {
+  .h-toast-semantic(@danger);
+}
+
+
+// desc: 动画
+// --------------------------------------------------
+.h-toast-fade-center-down-enter-active, 
+.h-toast-fade-center-down-leave-active,
+.h-toast-fade-down-enter-active,
+.h-toast-fade-down-leave-active,
+.h-toast-fade-center-up-enter-active, 
+.h-toast-fade-center-up-leave-active,
+.h-toast-fade-up-enter-active,
+.h-toast-fade-up-leave-active,
+ {
+  .fade-all();
+}
+
+.h-toast-fade-center-down-enter, .h-toast-fade-center-down-leave-to {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+}
+
+.h-toast-fade-down-enter, .h-toast-fade-down-leave-to {
+  opacity: 0;
+  transform: translate(0, -100%);
+}
+
+
+.h-toast-fade-center-up-enter, .h-toast-fade-center-up-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 100%);
+}
+
+.h-toast-fade-up-enter, .h-toast-fade-up-leave-to {
+  opacity: 0;
+  transform: translate(0, 100%);
+}
+
+
+
+// desc: 响应式设计
+// --------------------------------------------------
+@media (max-width: @screen-sm-min) {
+  .h-toast {
+    max-width: 100%;
+    transform: translateX(-50%);
+  }
+
+  .h-toast[class*=h-toast-top] {
+    top: 20px;
+    left: 50%;
+  }
+
+  .h-toast[class*=h-toast-bottom] {
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+  }
+
+
+  // desc: 动画
+  // --------------------------------------------------
+  .h-toast-fade-center-down-enter-active, 
+  .h-toast-fade-center-down-leave-active,
+  .h-toast-fade-down-enter-active,
+  .h-toast-fade-down-leave-active,
+  .h-toast-fade-center-up-enter-active, 
+  .h-toast-fade-center-up-leave-active,
+  .h-toast-fade-up-enter-active,
+  .h-toast-fade-up-leave-active,
+  {
+    .fade-all();
+  }
+
+
+  .h-toast-fade-center-down-enter, .h-toast-fade-center-down-leave-to,
+  .h-toast-fade-down-enter, .h-toast-fade-down-leave-to {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  .h-toast-fade-center-up-enter, .h-toast-fade-center-up-leave-to,
+  .h-toast-fade-up-enter, .h-toast-fade-up-leave-to {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+}
+
+
+
+

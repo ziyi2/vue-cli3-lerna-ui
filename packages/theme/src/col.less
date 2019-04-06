@@ -1,0 +1,108 @@
+// file: col.less
+// data: 2017/09/24
+// auth: ziyi2
+// desc: 栅格列样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+
+// desc: 变量
+// --------------------------------------------------
+@grid-gutter-width:                     30px;
+@col-max:                               24;
+
+// desc: 混合
+// --------------------------------------------------
+.h-col-init() {
+  .col(@init: 1) when (@init = 1) {
+    @item: ~".h-col-xs-@{init}, .h-col-sm-@{init}, .h-col-md-@{init}, .h-col-lg-@{init}";
+    .col((@init + 1), @item);
+  } 
+
+  .col(@index, @list) when (@index =< @col-max) {
+    @item: ~".h-col-xs-@{index}, .h-col-sm-@{index}, .h-col-md-@{index}, .h-col-lg-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+
+  .col(@index, @list) when(@index > @col-max) { 
+    @{list} {                     //使col-(xs|sm|md|lg)-[1~24]拥有以下样式
+      position: relative;
+      min-height: 1px;
+      float: left;
+      // padding-left:  (@grid-gutter-width / 2);        
+      // padding-right: (@grid-gutter-width / 2);
+    }
+  }
+
+  .col();
+}
+
+
+
+.h-col-init(@size, @type, @index: @col-max) when(@index >= 0) {
+  .h-col-type-init(@size, @type, @index);
+  .h-col-init(@size, @type, @index - 1);
+}
+
+.h-col-type-init(@size, @type, @index) when (@type = width) and (@index > 0) {
+  .h-col-@{size}-@{index} {
+    width: percentage((@index / @col-max));
+  }
+}
+
+.h-col-type-init(@size, @type, @index) when (@type = pull) and (@index > 0) {
+  .h-col-@{size}-pull-@{index} {
+    right: percentage((@index / @col-max));
+  }
+}
+
+.h-col-type-init(@size, @type, @index) when (@type = push) and (@index > 0) {
+  .h-col-@{size}-push-@{index} {
+    left: percentage((@index / @col-max));
+  }
+}
+
+.h-col-type-init(@size, @type, @index) when (@type = offset) and (@index > 0) {
+  .h-col-@{size}-offset-@{index} {
+    margin-left: percentage((@index / @col-max));
+  }
+}
+
+// desc: 样式
+// --------------------------------------------------
+
+.h-col-init();
+
+/* 列（手机移动先行） */
+.h-col-init(xs, width);
+.h-col-init(xs, pull);
+.h-col-init(xs, push);
+.h-col-init(xs, offset);
+
+/* 列（小屏幕平板） */
+@media (min-width: @screen-sm-min) {
+  .h-col-init(sm, width);
+  .h-col-init(sm, pull);
+  .h-col-init(sm, push);
+  .h-col-init(sm, offset);
+}
+
+/* 列（中等屏幕桌面显示器） */
+@media (min-width: @screen-md-min) {
+  .h-col-init(md, width);
+  .h-col-init(md, pull);
+  .h-col-init(md, push);
+  .h-col-init(md, offset);
+}
+
+/* 列（大屏幕大桌面显示器） */
+@media (min-width: @screen-lg-min) {
+  .h-col-init(lg, width);
+  .h-col-init(lg, pull);
+  .h-col-init(lg, push);
+  .h-col-init(lg, offset);
+}

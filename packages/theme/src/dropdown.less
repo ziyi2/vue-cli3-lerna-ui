@@ -1,0 +1,244 @@
+// file: dropdown.less
+// data: 2017/11/08
+// auth: ziyi2
+// desc: 下拉菜单样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+
+
+// desc: 变量
+// --------------------------------------------------
+@dropdown-menu-min-width:        200px;
+@dropdown-menu-padding-top:      4px;
+@dropdown-cotent-bg:           #fff; 
+@dropdown-content-padding:       8px 0;
+@dropdown-content-opacity:       1;
+
+@dropdown-item-separator-margin: 7px 10px;      // 注意item默认是 7px 12px
+@dropdown-item-list-icon-margin: 5px;
+
+// desc: 混合
+// --------------------------------------------------
+
+// desc: 基础样式
+// --------------------------------------------------
+.h-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.h-dropdown-menu {
+  position: absolute;
+  min-width: @dropdown-menu-min-width;
+  z-index: @dropdown-menu-index;
+  padding-top: @dropdown-menu-padding-top;
+}
+
+.h-dropdown-content {
+  background-color: @dropdown-cotent-bg;
+  border-radius: @border-radius-base;
+  padding: @dropdown-content-padding;
+  opacity: @dropdown-content-opacity;
+  box-shadow: @box-shadow-base;
+  overflow-y: auto;
+  .user-select(none);
+
+
+  /* 默认列表 */
+  .h-dropdown-item-list {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    height: @dropdown-item-height;
+    line-height: @line-height-computed;
+    padding: @dropdown-item-padding;
+    position: relative;
+    white-space: nowrap;
+    color: @font-color;
+    .fade-background();
+
+    &:hover {
+      background-color: @gray-90;
+    }
+
+    .h-dropdown-list-icon {
+      margin-right: @dropdown-item-list-icon-margin;
+      color: @font-color;
+      line-height:  @line-height-computed;
+      height:  @line-height-computed;
+      width:  @line-height-computed;
+      font-size: @font-size-base;
+      text-align: center;
+    }
+    
+  }
+
+  /* 分隔符 */
+  .h-dropdown-item-separator {
+    height: 1px;
+    margin: @dropdown-item-separator-margin;
+    overflow: hidden;
+    background-color: @gray-80;
+    display: block;
+  }
+
+  /* 分组标题 */
+  .h-dropdown-item-title {
+    font-size: @font-size-small;
+    color: @font-color-auxiliary; 
+    height: @dropdown-item-title-height;
+    text-decoration: none;
+    display: block;
+    line-height: @line-height-computed;
+    padding: @dropdown-item-title-padding;
+    white-space: nowrap;
+  }
+}
+
+
+
+// desc: 对齐方式
+// --------------------------------------------------
+.h-dropdown-align-left {
+  float: left !important;
+}
+
+.h-dropdown-align-right {
+  float: right !important;;
+}
+
+
+
+// desc: 下拉菜单定位
+// --------------------------------------------------
+.h-dropdown {
+  .h-dropdown-menu-top-left {
+    bottom: 100%;
+    left: 0;
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
+
+  .h-dropdown-menu-top-right {
+    bottom: 100%;
+    right: 0;
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
+
+  .h-dropdown-menu-bottom-right {
+    top: 100%;
+    right: 0;
+    padding-top: 4px;
+    padding-bottom: 0;
+  }
+
+  .h-dropdown-menu-bottom-left {
+    top: 100%;
+    left: 0;
+    padding-top: 4px;
+    padding-bottom: 0;
+  }
+}
+
+
+// desc: 下拉菜单disabled样式
+// --------------------------------------------------
+.h-dropdown-disabled {
+  .h-btn {
+    .disabled();
+  }
+}
+
+
+// desc: 默认列表disabled样式
+// --------------------------------------------------
+.h-dropdown-content {
+  .h-dropdown-item-list.h-dropdown-item-list-disabled {
+    .disabled();
+  }
+}
+
+
+
+
+// desc: 动画样式
+// --------------------------------------------------
+.h-dropdown-fade-enter-active, .h-dropdown-fade-leave-active {
+  .fade-all-dropdown();
+}
+.h-dropdown-fade-enter, .h-dropdown-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+
+
+
+// desc: dropdown 响应式设计
+// --------------------------------------------------
+@media (max-width: @screen-sm-min) {
+
+  .h-dropdown {
+    .h-dropdown-menu {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: auto;
+      z-index: @dropdown-menu-fixed-index;
+      padding-bottom: 0;
+      text-align: center;
+      
+      .h-dropdown-content {
+        border-radius: @border-radius-none;
+        padding: 0;
+        overflow: auto;
+        max-height: 800px;
+
+        .h-dropdown-item-list {
+          border-bottom: 1px solid @gray-90;
+          padding-left: 15px;
+          padding-right: 15px;
+          height: @dropdown-item-height + 10px;
+          line-height: @line-height-computed + 10px;
+        }
+
+        .h-dropdown-item-title {
+          border-bottom: 1px solid @gray-90;
+          padding-left: 15px;
+          padding-right: 15px;
+          height: @dropdown-item-title-height + 10px;
+          line-height: @line-height-computed + 10px;
+        }
+
+        .h-dropdown-item-separator {
+          display: none;
+        }
+
+        .h-dropdown-item-close {
+          height: 10px;
+          display: block;
+          background-color: @gray-95;
+        }
+      }
+    }
+  }
+
+  // desc: 响应式动画样式
+  // --------------------------------------------------
+  .h-dropdown-fade-enter-active, .h-dropdown-fade-leave-active {
+    .fade-all();
+  }
+  .h-dropdown-fade-enter, .h-dropdown-fade-leave-to {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@ziyi2/theme",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.css",
+  "scripts": {
+    "build": "gulp less"
+  },
+  "author": "ziyi2",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-less": "^4.0.1"
+  }
+}

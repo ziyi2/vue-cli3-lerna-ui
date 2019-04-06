@@ -1,0 +1,98 @@
+// file: pagination.less
+// data: 2018/04/05
+// auth: linchengzhang
+// desc: 分页样式
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+
+// desc: 样式
+// --------------------------------------------------
+.h-page-header {
+  li { list-style: none; }
+  .h-page-total {
+    display: inline-block;
+    margin: 20px 10px 20px 0;
+    vertical-align: top;
+    height: 34px;
+    line-height: 34px;
+  }
+  .h-select {
+    vertical-align: top;
+    margin: 20px 10px;
+  }
+  .h-pagination-jump {
+    display: inline-block;
+    input {
+      display: inline-block;
+      margin: 0 5px;
+      padding: 0 3px;
+      outline: none;
+      text-align: center;
+      width: 45px;
+      border: 1px solid #d9d9d9;
+      transition: all .2s ease;
+      &:hover, &:focus {
+        border: 1px solid #b3b3b3;
+      }
+      &:focus {
+        box-shadow: @box-shadow-base;
+      }
+    }
+  }
+}
+.h-pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  li {
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+    cursor: pointer;
+    padding: 6px 12px;
+    height: 34px;
+    color: #363636;
+    text-decoration: none;
+    border: 1px solid #d9d9d9;
+    transition: all .2s ease;
+    &:hover {
+      border-color: #b3b3b3;
+    }
+  }
+  .number {
+    margin: 0 4px;
+  }
+  .active {
+    background: #666666;
+    color: white;
+  }
+  .disabled, .disabled:hover {
+    color: #7a7a7a;
+    cursor: not-allowed;
+    background-color: #dbdbdb;
+    border-color: #dbdbdb;
+    opacity: 0.5;
+  }
+}
+
+// desc: 圆角类型
+// --------------------------------------------------
+.h-pagination-radius-small {
+  li {
+    border-radius: @border-radius-small;
+  }
+}
+.h-pagination-radius-base {
+  li {
+    border-radius: @border-radius-base;
+  }
+}
+.h-pagination-radius-large {
+  li {
+    border-radius: @border-radius-large;
+  }
+}

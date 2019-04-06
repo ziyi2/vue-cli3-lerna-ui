@@ -1,0 +1,39 @@
+// file: background.less
+// data: 2017/11/15
+// auth: ziyi2
+// desc: 遮幕样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 混合
+// --------------------------------------------------
+
+
+
+// desc: 基本样式
+// --------------------------------------------------
+.h-background {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: hsla(0,0%,4%,.5);
+  z-index: @dropdown-menu-index;
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: @screen-sm-min) {
+  .h-background-responsive-show {
+    display: block;
+  }
+}
+
+.h-background-show {
+  display: block;
+}
