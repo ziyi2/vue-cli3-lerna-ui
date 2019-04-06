@@ -3,27 +3,23 @@
 ## Project setup
 
 ``` bash
-npm i yarn lerna -g
-git clone https://github.com/ziyi2/vue-cli3-lerna-ui.git
+vue create --preset ziyi2/vue-cli3-lerna-ui my-project
 ```
 
 ### Compiles and hot-reloads for development
 
 ``` bash
-npm run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 
 ``` bash
-npm run build
+yarn build
 ```
 
 ### Lints and fixes files
 
 ``` bash
-npm run lint
+yarn lint
 ```
-
-### Customize configuration
-

@@ -9,6 +9,12 @@ module.exports = (api) => {
       'packages/*'
     ],
 
+    husky: {
+      hooks: {
+        "post-merge": "lerna bootstrap"
+      }
+    },
+
     scripts: {
       lib: 'lerna run lib',
       bootstrap: 'lerna bootstrap'
