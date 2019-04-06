@@ -3,7 +3,7 @@ module.exports = {
     btn: {
       content: 'Button Component'
     },
-    
+
     alert: {
       content: 'Alert Component'
     }

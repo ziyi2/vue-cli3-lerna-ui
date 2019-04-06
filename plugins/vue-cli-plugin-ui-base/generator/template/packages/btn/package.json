@@ -8,6 +8,9 @@
   "scripts": {
     "lib": "vue-cli-service build --target lib --formats commonjs --name index index.js"
   },
+  "dependencies": {
+    "locale": "^0.1.0"
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
