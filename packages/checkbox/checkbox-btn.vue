@@ -19,7 +19,7 @@
   </label>
 </template>
 <script>
-import * as Emit from '@ziyi2/utils/emit'
+import Emit from '@ziyi2/utils/emit'
 
 export default {
   name: 'HCheckboxBtn',

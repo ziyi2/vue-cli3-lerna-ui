@@ -12,6 +12,18 @@ vue create --preset ziyi2/vue-cli3-lerna-ui my-project
 yarn serve
 ```
 
+### Build UI Library
+
+``` bash
+lerna run lib
+```
+
+### Publish UI Librayr
+
+``` bash
+lerna publish
+```
+
 ### Compiles and minifies for production
 
 ``` bash

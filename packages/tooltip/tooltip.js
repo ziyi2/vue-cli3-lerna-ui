@@ -1,7 +1,7 @@
 
 import Vue from 'vue'
 import vnode from '@ziyi2/utils/vnode'
-import * as tooltip from '@ziyi2/utils/tooltip'
+import tooltip from '@ziyi2/utils/tooltip'
 import { setTimeout, clearTimeout } from 'timers'
 
 export default {

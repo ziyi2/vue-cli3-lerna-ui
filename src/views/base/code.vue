@@ -3,30 +3,31 @@
       <h3>代码高亮</h3>
       <form action="">
         <label for="">主题: </label>
-        <select v-model="theme">
-          <option disabled value="">请选择</option>
-          <option>light</option>
-          <option>dark</option>
-        </select>
+        <h-select :options="[{
+          label: 'light',
+          value: 'light'
+        }, {
+          label: 'dark',
+          value: 'dark'
+        }]" radius="small" v-model="theme">
+        </h-select>
         <label for="">语言: </label>
-        <select v-model="language">
+        <h-select :options="[{
+          label: 'javascript',
+          value: 'javascript'
+        }, {
+          label: 'css',
+          value: 'css'
+        }, {
+          label: 'html',
+          value: 'html'
+        }]"
+        v-model="language">
           <option disabled value="">请选择</option>
           <option>javascript</option>
           <option>css</option>
           <option>html</option>
-        </select>
-        <label for="">是否显示行数: </label>
-        <select v-model="line">
-          <option disabled value="">请选择</option>
-          <option value="true">显示</option>··········· 
-          <option value="">不显示</option>
-        </select>
-        <label for="">是否显示阴影: </label>
-        <select v-model="shadow">
-          <option disabled value="">请选择</option>
-          <option value="true">显示</option>
-          <option value="">不显示</option>
-        </select>
+        </h-select>
       </form>
 
       <h-code :line="!!line" :lang="language" :theme="theme" :shadow="!!shadow" v-if="language === 'javascript'">
