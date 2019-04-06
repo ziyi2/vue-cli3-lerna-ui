@@ -1,9 +1,9 @@
 {
-  "name": "@ziyi2/button",
+  "name": "button",
   "version": "0.1.0",
   "description": "button component",
   "main": "lib/index.common.js",
-  "author": "ziyi2",
+  "author": "",
   "license": "ISC",
   "scripts": {
     "lib": "vue-cli-service build --target lib --formats commonjs --name index index.js"

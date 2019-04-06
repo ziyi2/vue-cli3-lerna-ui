@@ -1,0 +1,60 @@
+// file: mixins.less
+// data: 2017/09/21
+// auth: ziyi2
+// desc: 混合
+// --------------------------------------------------
+
+//== 清除浮动
+.clearfix() {   
+  &:before,
+  &:after {
+    content: " ";   
+    display: table; 
+  }
+  &:after {
+    clear: both;    
+  }
+}
+
+
+//==  是否允许用户选择文本
+.user-select(@select) {
+  -webkit-user-select: @select;
+    -moz-user-select: @select;
+      -ms-user-select: @select; // IE10+
+      -o-user-select: @select;
+          user-select: @select;
+}
+
+//== 透明度
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+//== 阴影
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; 
+          box-shadow: @shadow;
+}
+
+
+//== 圆角
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+  border-top-right-radius: @radius;
+}
+
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+  border-top-left-radius: @radius;
+}
+
+//== disabled
+.disabled() {
+  cursor: not-allowed;
+  .opacity(.5);
+  .box-shadow(none);
+}

@@ -1,0 +1,153 @@
+// file: select.less
+// data: 2017/10/07
+// auth: ziyi2
+// desc: 选择器样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+
+// desc: 变量
+// --------------------------------------------------
+@select-transition: all .2s ease;
+@selct-cursor: pointer;
+@select-disabled-color: #bbbec4;
+@select-dropdown-background-color: #fff;
+
+// desc: 混合
+// --------------------------------------------------
+
+
+// desc: 样式
+// --------------------------------------------------
+.h-select {
+  position: relative;
+  display: inline-block;
+  height: 34px;
+  background-color: #fff;
+  border: 1px solid @gray-80;
+  outline: none;
+  cursor: @selct-cursor;
+  transition: @select-transition;
+  text-align: left;
+  &:hover,
+  &:focus {
+    border-color: @gray-70;
+  }
+  li { list-style: none; }
+}
+.h-select-disabled {
+  cursor: not-allowed;
+  background: #f5f7fa;
+  color: #c0c4cc;
+  &:hover {
+    border-color: @gray-80;
+  };
+}
+.h-select-focus{
+  border-color: @gray-70;
+  box-shadow: @box-shadow-base;
+}
+.h-select-default {
+  padding: 3px 10px;
+}
+.h-select-placeholder { color: #999; }
+.h-select-arrow {
+  position: absolute;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  vertical-align: baseline;
+  top: 50%;
+  margin-top: -9px;
+  right: 7px;
+  font-size: 16px;
+  transition: @select-transition;
+}
+.h-select-arrow i { vertical-align: top!important; line-height: 18px;}
+.h-select-show {
+  .h-select-arrow {
+    transform: rotate(180deg);
+  }
+}
+.h-selected-value {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+}
+.h-select-dropdown-group {
+  padding: 0;
+  cursor: default;
+  .h-select-dropdown-group-title {
+    padding: 8px 12px;
+    color: #999;
+    font-size: 12px;
+  }
+  &:not(:last-of-type)&:after {
+    content: '';
+    height: 1px;
+    margin: 7px 10px;
+    overflow: hidden;
+    background-color: #d9d9d9;
+    display: block;
+  }
+}
+.h-select-dropdown {
+  position: absolute;
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px 0;
+  animation: slide-down .3s ease-in;
+  background-color: @select-dropdown-background-color;
+  box-sizing: border-box;
+  box-shadow: @box-shadow-base;
+  z-index: 999;
+  left: 0;
+  overflow-y: auto;
+}
+.h-select-item {
+  padding: 5px 12px;
+  cursor: @selct-cursor;
+  transition: @select-transition;
+  &:hover {
+    background-color: @gray-80;
+  }
+}
+.h-selected-item {
+  background-color: @gray-90;
+  &:hover {
+    background-color: @gray-90;
+  }
+}
+.h-select-item-disabled {
+  cursor: not-allowed;
+  color: @select-disabled-color;
+  &:hover {
+    background-color: @select-dropdown-background-color;
+  }
+}
+
+// desc: 圆角类型
+// --------------------------------------------------
+.h-select-radius-small {
+  border-radius: @border-radius-small;
+  .h-select-dropdown {
+    border-radius: @border-radius-small;
+  }
+}
+.h-select-radius-base {
+  border-radius: @border-radius-base;
+  .h-select-dropdown {
+    border-radius: @border-radius-base;
+  }
+}
+.h-select-radius-large {
+  border-radius: @border-radius-large;
+  .h-select-dropdown {
+    border-radius: @border-radius-large;
+  }
+}
+

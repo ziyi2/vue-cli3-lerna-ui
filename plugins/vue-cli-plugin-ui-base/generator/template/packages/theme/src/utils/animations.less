@@ -1,0 +1,54 @@
+// file: animations.less
+// data: 2017/10/28
+// auth: ziyi2
+// desc: 动画
+// --------------------------------------------------
+
+// desc: 变量
+// --------------------------------------------------
+@base-time:    .2s;
+@dropdown-time: .2s;
+
+// desc: 样式
+// --------------------------------------------------
+
+// Expand
+.expand-init {
+  transform: scale(0);
+  transition: transform @base-time ease;
+  -webkit-transition: transform @base-time ease;
+}
+
+.expand-done {
+  transform: scale(1);
+}
+
+// Fade Color
+.fade-background {
+  transition: background-color @base-time ease;
+}
+
+.fade-border {
+  transition: border-color @base-time ease;
+}
+
+.fade-color {
+  transition: color @base-time ease;
+}
+
+.fade-all {
+  transition: all @base-time ease;
+}
+
+.fade-opacity {
+  transition: opacity @base-time ease;
+}
+
+.fade-height {
+  transition: height @base-time ease;
+}
+
+
+.fade-all-dropdown {
+  transition: all @dropdown-time ease;
+}

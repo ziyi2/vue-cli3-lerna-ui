@@ -1,0 +1,191 @@
+// file: btn.less
+// data: 
+// auth: 
+// desc: 按钮样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+// desc: 变量
+// --------------------------------------------------
+@btn-default-bg:              #fff;
+@btn-default-color:             @btn-default-bg;
+
+// desc: 混合
+// --------------------------------------------------
+
+.h-btn-semantic(@color) {
+  background-color: lighten(@color, 10%);
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: lighten(@color, 5%);
+    border-color: transparent;
+  }
+
+  &:active {
+    background-color: lighten(@color, 10%);
+    border-color: transparent;
+  }
+}
+
+
+// desc: 样式
+// type: 基本类型
+// --------------------------------------------------
+.h-btn {
+  display: inline-block;
+  padding: @btn-default-padding;
+
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: @line-height-computed;
+  height: @btn-default-height;    // 兼容IE
+  // vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+
+  outline-style: none;
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid @gray-80;
+  border-radius: @border-radius-none;  
+  color: @font-color;
+
+  .fade-all();
+
+  cursor: pointer;
+
+  .user-select(none);
+
+  &:hover,
+  &:focus {
+    border-color: @gray-70;
+  }
+
+  &:active {
+    border-color: @gray-80;
+  }
+
+  i {
+    font-size: @font-size-base;
+    line-height: @line-height-computed;
+  }
+
+  i + span, span + i {
+    margin-left: 5px;
+  }
+}
+
+.h-btn + .h-btn {
+  margin-left: @margin-left-default;
+}
+
+// desc: 样式
+// type: 阴影
+// --------------------------------------------------
+.h-btn-shadow {
+  .box-shadow(@box-shadow-auxiliary);
+  border: none;
+}
+
+
+
+// desc: 样式
+// type: 语义类型
+// --------------------------------------------------
+.h-btn-semantic-default {
+  .h-btn-semantic(@default);
+}
+
+.h-btn-semantic-dark {
+  .h-btn-semantic(@gray-30);
+  color: white;
+}
+
+.h-btn-semantic-primary {
+  .h-btn-semantic(@primary);
+}
+
+.h-btn-semantic-success {
+  .h-btn-semantic(@success);
+}
+
+.h-btn-semantic-info {
+  .h-btn-semantic(@info);
+}
+
+.h-btn-semantic-warning {
+  .h-btn-semantic(@warning);
+}
+
+.h-btn-semantic-danger {
+  .h-btn-semantic(@danger);
+}
+
+
+
+// desc: 样式
+// type: 圆角类型
+// --------------------------------------------------
+
+.h-btn-radius-small {
+  border-radius: @border-radius-small;
+}
+
+.h-btn-radius-large {
+  border-radius: @border-radius-large;
+}
+
+.h-btn-radius-circle {
+  border-radius: @btn-radius-circle;
+}
+
+// desc: 样式
+// type: 文本按钮
+// --------------------------------------------------
+.h-btn-semantic-text {
+  border: none;
+  color: @primary;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    color:  darken(@primary,20%);
+    background-color: transparent;
+    border: none;
+  }
+
+  &:active {
+    color: @primary;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+
+// desc: 样式
+// type: 禁用状态
+// --------------------------------------------------
+.h-btn[disabled] {
+  .disabled();
+}                                 
+
+
+// desc: 样式
+// type: 大小尺寸
+// --------------------------------------------------
+.h-btn-size-large {
+  height: @btn-large-height;
+  padding: @btn-large-padding;
+}
+
+.h-btn-size-small {
+  height: @btn-small-height;
+  padding: @btn-small-padding;
+}

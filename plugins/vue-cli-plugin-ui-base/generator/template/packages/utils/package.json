@@ -1,0 +1,14 @@
+{
+  "name": "utils",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "lib": "babel src --out-dir lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3"
+  }
+}

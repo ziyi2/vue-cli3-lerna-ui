@@ -1,8 +1,8 @@
 {
-  "name": "@ziyi2/vue-cli-plugin-ui-cz",
+  "name": "alert",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
-  "author": "ziyi2",
+  "author": "",
   "license": "ISC"
 }

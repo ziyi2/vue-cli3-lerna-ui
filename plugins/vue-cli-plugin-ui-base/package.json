@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-plugin-ui-base",
+  "name": "@ziyi2/vue-cli-plugin-ui-base",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",

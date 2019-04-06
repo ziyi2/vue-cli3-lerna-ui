@@ -1,0 +1,140 @@
+// file: alert.less
+// data: 
+// auth: 
+// desc: 警告样式
+// --------------------------------------------------
+
+// desc: 通用变量和函数(转css需要)
+// --------------------------------------------------
+@import "./utils/var.less";
+@import "./utils/mixins.less";
+@import "./utils/animations.less";
+
+
+// desc: 变量
+// --------------------------------------------------
+// @alert-padding-right: 
+
+
+
+// desc: 混合
+// --------------------------------------------------
+.h-alert-semantic(@color) {
+  background-color: lighten(@color, 20%);
+  border-color: transparent;
+  color: darken(@color, 30%);
+
+  hr {
+    border: none;
+    border-top: 1px solid @color;
+    margin: 10px 0;
+  }
+}
+
+
+// desc: 基本样式
+// --------------------------------------------------
+
+.h-alert {
+  padding: @alert-default-padding;
+  min-height: @alert-default-height;
+  margin-bottom: @margin-bottom-default;
+  border: 1px solid transparent;
+  background-color: @gray-95;
+  position: relative;
+
+  span {
+    padding: @alert-default-padding;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    line-height: 16px;
+    min-height: @alert-default-height - 2;
+    font-size: 20px;
+    font-weight: 700;
+    color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: .5;
+    cursor: pointer;
+    .user-select(none);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+
+// desc: 语义类型
+// --------------------------------------------------
+
+.h-alert-semantic-primary {
+  .h-alert-semantic(@primary);
+}
+
+.h-alert-semantic-success {
+  .h-alert-semantic(@success);
+}
+
+.h-alert-semantic-info {
+  .h-alert-semantic(@info);
+}
+
+.h-alert-semantic-warning {
+  .h-alert-semantic(@warning);
+}
+
+.h-alert-semantic-danger {
+  .h-alert-semantic(@danger);
+}
+
+
+// desc: 圆角类型
+// --------------------------------------------------
+.h-alert-radius-small {
+  border-radius: @border-radius-small;
+}
+
+.h-alert-radius-large {
+  border-radius: @border-radius-large;
+}
+
+.h-alert-radius-circle {
+  border-radius: @alert-radius-circle;
+}
+
+
+// desc: 大小
+// --------------------------------------------------
+.h-alert-size-small {
+  min-height: @alert-small-height;
+  padding: @alert-small-padding;
+
+  span {
+    min-height: @alert-small-height;
+    padding: @alert-small-padding;
+  }
+
+}
+
+.h-alert-size-large {
+  min-height: @alert-large-height;
+  padding: @alert-large-padding;
+
+  span {
+    min-height: @alert-large-height;
+    padding: @alert-large-padding;  
+  }
+}
+
+
+// desc: 动画样式
+// --------------------------------------------------
+.h-alert-fade-enter-active, .h-alert-fade-leave-active {
+  .fade-all;
+}
+.h-alert-fade-enter, .h-alert-fade-leave-to {
+  opacity: 0;
+}
