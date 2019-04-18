@@ -3,7 +3,7 @@
 ## Project setup
 
 ``` bash
-vue create --preset ziyi2/vue-cli3-lerna-ui my-project
+vue create --preset ziyi2/vue-cli3-lerna-ui my-project --packageManager yarn
 ```
 
 ### Compiles and hot-reloads for development
